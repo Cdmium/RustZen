@@ -1,4 +1,32 @@
-// HashSet
+use std::collections::BinaryHeap;
+fn main() {
+    let mut heap = BinaryHeap::new();
+    assert_eq!(heap.peek(), None);
+    let arr = [93, 80, 48, 53, 72, 30, 18, 36, 15, 35, 45];
+    for &i in arr.iter() {
+        heap.push(i);
+    }
+    assert_eq!(heap.peek(), Some(&93));
+    println!("{:?}", heap);
+}
+// // HashSet<K> BTreeSet<K>
+// use std::collections::HashSet;
+// use std::collections::BTreeSet;
+// fn main() {
+//     let mut hbooks = HashSet::new();
+//     let mut bbooks = BTreeSet::new();
+//     hbooks.insert("A Song of Ice and Fire");
+//     hbooks.insert("The Emerald City");
+//     hbooks.insert("The Odyssey");
+//     if !hbooks.contains("The Emerald City") {
+//         println!("We have {} books, but The Emerald City ain't one.", hbooks.len());
+//     }
+//     println!("{:?}", hbooks);
+//     bbooks.insert("A Song of Ice and Fire");
+//     bbooks.insert("The Emerald City");
+//     bbooks.insert("The Odyssey");
+//     println!("{:?}", bbooks);
+// }
 // // HashMap<K, V> BTreeMap<K, V>
 // use std::collections::BTreeMap;
 // use std::collections::HashMap;

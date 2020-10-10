@@ -1,5 +1,5 @@
 [package]
-name = "RustZen"
+name = "rust_zen"
 version = "0.1.0"
 authors = ["Cdmium <yanyuxuan@cau.edu.cn>"]
 edition = "2018"
