@@ -1,4 +1,74 @@
+// Vec<()>
+fn main() {
+    let v: Vec<()> = vec![(); 10];
+    for i in v {
+        println!{"{:?}", i};
+    }
+}
 
+// // ZST
+// enum Void {}
+// struct Foo;
+// struct Baz {
+//     foo: Foo,
+//     qux: (),
+//     baz: [u8; 0],
+// }
+// fn main() {
+
+// }
+
+
+// // size_of &[u32; 5] &[32]
+// fn main() {
+//     println!("{}", std::mem::size_of::<&[u32; 5]>());
+//     println!("{}", std::mem::size_of::<&[u32]>());
+// }
+
+
+// // &mut [u32]
+// fn reset(arr: &mut [u32]) {
+//     arr[0] = 5;
+//     arr[1] = 4;
+//     arr[2] = 3;
+//     arr[3] = 2;
+//     arr[4] = 1;
+//     println!("array length {:?}", arr.len());
+//     println!("reset array {:?}", arr);
+// }
+// fn main() {
+//     let mut arr = [1, 2, 3, 4, 5];
+//     println!("reset before: origin array {:?}", arr);
+//     {
+//         let mut_arr: &mut[u32] = &mut arr;
+//         reset(mut_arr);
+//     }
+//     println!("reset after: origin array {:?}", arr);
+// }
+
+// // [u32; 5]
+// fn reset(mut arr: [u32; 5]) {
+//     arr[0] = 5;
+//     arr[1] = 4;
+//     arr[2] = 3;
+//     arr[3] = 2;
+//     arr[4] = 1;
+//     println!("reset str {:?}", arr);
+// }
+// fn main(){
+//     let arr: [u32; 5] = [1, 2, 3, 4, 5];
+//     reset(arr);
+//     println!("origin are {:?}", arr);
+// }
+
+// // &str
+// fn main(){
+//     let str = "Hello Rust";
+//     let ptr = str.as_ptr();
+//     let len = str.len();
+//     println!("{:p}", ptr);
+//     println!("{:?}", len);
+// }
 
 // // main Result<T, E>
 // use std::fs::File;
