@@ -1,10 +1,143 @@
-// Vec<()>
-fn main() {
-    let v: Vec<()> = vec![(); 10];
-    for i in v {
-        println!{"{:?}", i};
-    }
+trait Add<RHS = Self> {
+    type Output;
+    fn add(self, rhs: RHS) -> self::Output;
 }
+
+// // 3-28
+// use std::ops::Add;
+// impl Add<u64> for u32 {
+//     type Output = u64;
+//     fn add(self, other: u64) -> Self::Output {
+//         (self as u64) + other
+//     }
+// }
+// fn main() {
+//     let a = 1u32;
+//     let b = 2u64;
+//     println!("{}", a + b);
+// }
+
+// // trait add 3-22
+// trait Add<RHS, Output> {
+//     fn my_add(self, rhs: RHS) -> Output;
+// }
+// impl Add<i32, i32> for i32 {
+//     fn my_add(self, rhs: i32) -> i32 {
+//         self + rhs
+//     }
+// }
+// impl Add<u32, i32> for u32 {
+//     fn my_add(self, rhs: u32) -> i32 {
+//         (self + rhs) as i32
+//     }
+// }
+// fn main() {
+//     let (a, b, c, d) = (1i32, 2i32, 3u32, 4u32);
+//     let x: i32 = a.my_add(b);
+//     let y: i32 = c.my_add(d);
+//     println!("{} {}", x, y);
+// }
+
+// // listing 3-21
+// #[derive(Debug, PartialEq)]
+// struct Foo(i32);
+// #[derive(Debug, PartialEq)]
+// struct Bar(i32, i32);
+// trait Inst {
+//     fn new(i: i32) -> Self;
+// }
+// impl Inst for Foo {
+//     fn new(i: i32) -> Foo {
+//         Foo(i)
+//     }
+// }
+// impl Inst for Bar {
+//     fn new(i: i32) -> Bar {
+//         Bar(i, i + 10)
+//     }
+// }
+// fn foobar<T: Inst>(i: i32) -> T {
+//     T::new(i)
+// }
+// fn main() {
+//     let f: Foo = foobar(10);
+//     println!("{:?}", f);
+//     let b: Bar = foobar(20);
+//     println!("{:?}", b);
+// }
+// // monomorphization function
+// fn foo_1(x: i32) -> i32 {
+//     return x;
+// }
+// fn foo_2(x: &str) -> &str {
+//     return x;
+// }
+// fn main() {
+//     foo_1(1);
+//     foo_2("2");
+// }
+
+// // generic structure
+// #[derive(Debug, PartialEq)]
+// struct Point<T> {x: T, y: T}
+// impl<T> Point<T> {
+//     fn new(x: T, y: T) -> Self {
+//         Point { x, y }
+//     }
+// }
+// fn main() {
+//     let point1 = Point::new(1, 2);
+//     let point2 = Point::new("1", "2");
+//     assert_eq!(point1, Point { x: 1, y: 2 });
+//     assert_eq!(point2, Point { x: "1", y: "2" });
+// }
+
+// // generic function
+// fn foo<T>(x: T) -> T {
+//     return x;
+// }
+// fn main() {
+//     assert_eq!(foo(1), 1);
+//     assert_eq!(foo("hello"), "hello");
+// }
+
+// fn main() {
+//     let a = 0;
+//     let a_pos = a.is_positive();
+// }
+
+// fn main() {
+//     let x = "1";
+//     assert_eq!(x.parse::<i32>().unwrap(), 1);
+// }
+
+// fn main() {
+//     let x = "1";
+//     let int_x: i32 = x.parse().unwrap();
+//     assert_eq!(int_x, 1);
+// }
+
+// // 类型推导
+// fn sum(a: u32, b: i32) -> u32 {
+//     a + (b as u32)
+// }
+// fn main() {
+//     let a = 1;
+//     let b = 2;
+//     assert_eq!(sum(a, b), 3);
+//     let elem = 5u8;
+//     let mut vec = Vec::new();
+//     vec.push(elem);
+//     assert_eq!(vec, [5]);
+// }
+
+// // Vec<()>
+// fn main() {
+//     let v: Vec<()> = vec![(); 10];
+//     for i in v {
+//         println!{"{:?}", i};
+//     }
+// }
 
 // // ZST
 // enum Void {}
