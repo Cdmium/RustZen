@@ -1,7 +1,68 @@
-trait Add<RHS = Self> {
-    type Output;
-    fn add(self, rhs: RHS) -> self::Output;
+// 3-31
+trait Page {
+    fn set_page(&self, p: i32) {
+        println!("Page Default: 1");
+    }
 }
+trait PerPage {
+    fn set_perpage(&self, num: i32) {
+        println!("Per Page Default: 10");
+    }
+}
+struct MyPaginate { page: i32 }
+impl Page for MyPaginate {}
+impl PerPage for MyPaginate {}
+trait Paginate: Page + PerPage {
+    fn set_skip_page(&self, num: i32) {
+        println!("Skip Page: {:?}", num);
+    }
+}
+impl <T: Page + PerPage> Paginate for T {}
+fn main() {
+    let my_paginate = MyPaginate{ page: 1 };
+    my_paginate.set_page(2);
+    my_paginate.set_perpage(100);
+    my_paginate.set_skip_page(12);
+}
+
+
+// // 3-30
+// use std::ops::Add;
+// #[derive(Debug)]
+// struct Point {
+//     x: i32,
+//     y: i32,
+// }
+// impl Add for Point {
+//     type Output = Point;
+//     fn add(self, other: Point) -> Point {
+//         Point {
+//             x: self.x + other.x,
+//             y: self.y + other.y,
+//         }
+//     }
+// }
+// fn main() {
+//     println!("{:#?}", Point { x: 1, y: 0 } + Point { x: 2, y: 3 });
+// }
+
+// // 3-29
+// trait Add<RHS = Self> {
+//     type Output;
+//     fn add(self, rhs: RHS) -> Self::Output;
+// }
+// impl Add<u64> for u32 {
+//     type Output = u64;
+//     fn add(self, other: u64) -> Self::Output {
+//         (self as u64) + other
+//     }
+// }
+// fn main() {
+//     let a = 1u32;
+//     let b = 2u64;
+//     println!("{}", a.add(b));
+// }
+
 
 // // 3-28
 // use std::ops::Add;
